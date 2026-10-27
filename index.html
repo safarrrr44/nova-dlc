@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nova DLC — чит-клиент для Minecraft 1.21.11</title>
+<meta name="description" content="Nova DLC — премиальный DLC-клиент для Minecraft 1.21.11. 120+ модулей, зелёно-синий HUD, ИИ-поддержка на борту и обходы актуальных античитов.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%2322e584'/><stop offset='1' stop-color='%2322d3ee'/></linearGradient></defs><rect width='100' height='100' rx='22' fill='url(%23g)'/><text x='50' y='68' font-size='50' text-anchor='middle' fill='%2304140c' font-family='monospace' font-weight='bold'>N</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ===== Preloader ===== -->
+<div class="preloader" id="preloader">
+  <div class="preloader-logo">
+    <div class="pre-cube"><span></span><span></span><span></span></div>
+    <div class="preloader-title">Nova DLC</div>
+    <div class="preloader-bar"><i></i></div>
+  </div>
+</div>
+
+<!-- ===== Glow blobs background ===== -->
+<div class="bg-fx" aria-hidden="true">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+  <div class="grid-overlay"></div>
+</div>
+
+<!-- ===== Nav ===== -->
+<header class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="#" class="logo">
+      <span class="logo-mark">✦</span>
+      Nova<span>&nbsp;DLC</span>
+    </a>
+    <nav class="nav-links">
+      <a href="#features">Возможности</a>
+      <a href="#modules">Модули</a>
+      <a href="#stats">Статистика</a>
+      <a href="#play">Играть</a>
+      <a href="#arena">Арена</a>
+      <a href="#ai">Nova AI</a>
+      <a href="#mail">Почта</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a href="#download" class="btn btn-sm btn-primary nav-download">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>
+      Скачать
+    </a>
+    <button class="burger" id="burger" aria-label="Меню"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#features">Возможности</a>
+  <a href="#modules">Модули</a>
+  <a href="#stats">Статистика</a>
+  <a href="#play">Играть</a>
+  <a href="#arena">Арена</a>
+  <a href="#ai">Nova AI</a>
+  <a href="#mail">Почта</a>
+  <a href="#faq">FAQ</a>
+  <a href="#download" class="btn btn-primary">Скачать бесплатно</a>
+</div>
+
+<!-- ===== Hero ===== -->
+<section class="hero">
+  <canvas id="particles"></canvas>
+  <div class="container hero-inner">
+    <div class="hero-left">
+      <div class="hero-badge reveal">
+        <span class="pulse-dot"></span>
+        v4.0 · Minecraft 1.21.11 · Fabric
+      </div>
+      <h1 class="hero-title reveal">
+        <span class="line">Твой</span>
+        <span class="line"><span class="grad-text">Nova DLC</span></span>
+        <span class="line">заряжен на PvP</span>
+      </h1>
+      <p class="hero-sub reveal">
+        Премиальный DLC-пак для чит-клиента — <b>Minecraft 1.21.11</b>, 120+ модулей,
+        молниеносный инжект, HUD в фирменных зелёно-синих тонах и <b>Nova AI</b> на борту.
+      </p>
+      <div class="hero-typing reveal">
+        <span class="chevron">&gt;</span><span id="typed"></span><span class="caret"></span>
+      </div>
+      <div class="hero-cta reveal">
+        <a href="#download" class="btn btn-primary btn-lg">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>
+          Скачать бесплатно
+        </a>
+        <a href="#modules" class="btn btn-ghost btn-lg">Смотреть модули
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14m-6-6l6 6-6 6"/></svg>
+        </a>
+      </div>
+      <div class="hero-meta reveal">
+        <span>◆ Windows / Linux</span><span>◆ Обход Grim / Matrix</span><span>◆ Nova AI на борту</span>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="cube-glow"></div>
+      <div class="cube-scene reveal">
+        <div class="cube">
+          <div class="face face-front"></div>
+          <div class="face face-back"></div>
+          <div class="face face-left"></div>
+          <div class="face face-right"></div>
+          <div class="face face-top"></div>
+          <div class="face face-bottom"></div>
+        </div>
+      </div>
+      <div class="float-chip chip-1">⚡ FPS +240%</div>
+      <div class="float-chip chip-2">🛡 Bypass 1.21.11</div>
+      <div class="float-chip chip-3">✦ Nova AI ready</div>
+    </div>
+  </div>
+  <a href="#marquee" class="scroll-hint" aria-label="Прокрутить вниз"><span></span></a>
+</section>
+
+<!-- ===== Marquee ===== -->
+<div class="marquee-wrap" id="marquee">
+  <div class="marquee">
+    <div class="marquee-track" id="track1"></div>
+    <div class="marquee-track" id="track2"></div>
+  </div>
+</div>
+
+<!-- ===== Features ===== -->
+<section class="section" id="features">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-tag">// возможности</span>
+      <h2>Почему выбирают <span class="grad-text">Nova DLC</span></h2>
+      <p>Этот DLC — прокачка чистого клиента: премиум-модули с первого дня и апдейты каждые сутки.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card reveal tilt">
+        <div class="icon-tile">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z"/><path d="M9 12l2 2 4-4"/></svg>
+        </div>
+        <h3>Обходы античитов</h3>
+        <p>Актуальные байпасы для Grim, Matrix, Vultr и анархия-античитов. Постоянные обновления после каждого патча.</p>
+      </div>
+      <div class="feature-card reveal tilt">
+        <div class="icon-tile">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z"/></svg>
+        </div>
+        <h3>Мгновенный инжект</h3>
+        <p>Запуск за 0.3 секунды без зависаний. Клиент грузится параллельно с игрой и не режет FPS.</p>
+      </div>
+      <div class="feature-card reveal tilt">
+        <div class="icon-tile">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M8 9l3 3-3 3M14 15h3"/></svg>
+        </div>
+        <h3>Нативный GUI</h3>
+        <p>Плавный ClickGUI в зелёно-синей теме: анимации окон, поиск модулей и вотермарка Nova прямо поверх игры.</p>
+      </div>
+      <div class="feature-card reveal tilt">
+        <div class="icon-tile">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3.5"/><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/></svg>
+        </div>
+        <h3>Тактический HUD</h3>
+        <p>Настраиваемые оверлеи: aim-индикаторы, траектории кристаллов, кастомные вотермарки и скриншот при убийстве.</p>
+      </div>
+      <div class="feature-card reveal tilt">
+        <div class="icon-tile">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 12a9 9 0 11-3-6.7M21 4v5h-5"/></svg>
+        </div>
+        <h3>Апдейты каждый день</h3>
+        <p>Собственная команда разработки: фикс выходит ночью — релиз утром. Автообновление в один клик.</p>
+      </div>
+      <div class="feature-card reveal tilt">
+        <div class="icon-tile">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="7" y="3" width="10" height="18" rx="2.5"/><path d="M12 7.5h.01M12 11h4M8 11h.5M12 15h.01M8.5 15h3"/></svg>
+        </div>
+        <h3>Nova AI на борту</h3>
+        <p>Встроенный ИИ-ассистент: мгновенно подсказывает по модулям, конфигам и обходам прямо в игре и на сайте.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Modules ===== -->
+<section class="section section-alt" id="modules">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-tag">// модули</span>
+      <h2>120+ модулей. <span class="grad-text">Кликни по любому</span></h2>
+      <p>Попробуй переключить — работает так же плавно, как в самой игре.</p>
+    </div>
+    <div class="modules-grid" id="modulesGrid"></div>
+    <div class="modules-note reveal">
+      <p>…и ещё <b>100+</b> модулей внутри: Movement, Render, Exploit, Misc, Player, Client.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Stats ===== -->
+<section class="section" id="stats">
+  <div class="container">
+    <div class="stats-row">
+      <div class="stat-item reveal">
+        <div class="stat-value"><span class="counter" data-target="120">0</span><i>+</i></div>
+        <div class="stat-label">модулей</div>
+      </div>
+      <div class="stat-item reveal">
+        <div class="stat-value"><span class="counter" data-target="997">0</span><i>+</i></div>
+        <div class="stat-label">средний FPS</div>
+      </div>
+      <div class="stat-item reveal">
+        <div class="stat-value"><span class="counter" data-target="54">0</span><i>K</i></div>
+        <div class="stat-label">скачиваний</div>
+      </div>
+      <div class="stat-item reveal">
+        <div class="stat-value"><span class="counter" data-target="24">0</span><i>/7</i></div>
+        <div class="stat-label">поддержка</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Download ===== -->
+<section class="section" id="download">
+  <div class="container">
+    <div class="download-card reveal">
+      <div class="dl-glow"></div>
+      <div class="dl-mark"></div>
+      <span class="section-tag">// download</span>
+      <h2>Готов занять <span class="grad-text">топ-1</span>?</h2>
+      <p>Забирай Nova DLC для Minecraft <b>1.21.11</b> бесплатно. Без лаунчеров-прокладок.</p>
+      <div class="dl-buttons">
+        <a href="#" class="btn btn-primary btn-lg" onclick="notify('Вставь сюда прямую ссылку на .zip с билдом Nova DLC 😉'); return false;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>
+          Скачать для Windows
+        </a>
+        <a href="#" class="btn btn-ghost btn-lg" onclick="notify('GitHub-зеркало появится здесь.'); return false;">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.48v-1.7c-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.9-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.89 1.56 2.34 1.11 2.9.85.1-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05a9.3 9.3 0 015 0c1.9-1.33 2.74-1.05 2.74-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.8-4.57 5.05.36.32.68.94.68 1.9v2.82c0 .27.18.58.69.48A10.02 10.02 0 0022 12.25C22 6.58 17.52 2 12 2z"/></svg>
+          GitHub-зеркало
+        </a>
+      </div>
+      <div class="dl-meta">
+        <span>📦 Windows 10/11 · Linux</span>
+        <span>💾 4.8 MB</span>
+        <span>💉 Fabric 1.21.11</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Nova Arcade ===== -->
+<section class="section section-alt" id="play">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-tag">// nova arcade</span>
+      <h2>Играй <span class="grad-text">прямо на сайте</span></h2>
+      <p>Minecraft в браузере — без лаунчера, без установки, прямо с локалхоста. Одиночный режим и multiplayer.</p>
+    </div>
+
+    <div class="arcade-card reveal">
+      <div class="arcade-bar">
+        <div class="arcade-leds"><span></span><span></span><span></span></div>
+        <div class="arcade-title">NOVA ARCADE · EAGLERCRAFT</div>
+        <div class="arcade-tabs">
+          <button class="arcade-tab active" data-ver="18">1.8 · EaglercraftX</button>
+          <button class="arcade-tab" data-ver="152">1.5.2 · Ретро</button>
+        </div>
+        <div class="arcade-status" id="arcadeStatus">● ОЖИДАНИЕ</div>
+        <button class="arcade-fs" id="arcadeFsBtn" title="На весь экран">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/></svg>
+        </button>
+      </div>
+      <div class="arcade-screen" id="arcadeScreen">
+        <div class="arcade-scan" aria-hidden="true"></div>
+        <div class="arcade-loader" id="arcadeLoader">
+          <div class="loader-creativity">
+            <div class="l-cube"><span></span><span></span><span></span><span></span></div>
+          </div>
+          <div class="loader-text">MINICRAFT LOADING…</div>
+          <div class="loader-sub">клиент грузится с локалхоста · пинг ~0</div>
+        </div>
+        <iframe class="arcade-frame" id="arcadeFrame" title="Minecraft в браузере" allow="fullscreen; pointer-lock"></iframe>
+      </div>
+      <div class="arcade-bar arcade-bar-bottom">
+        <button class="btn btn-primary btn-sm arcade-play" id="arcadePlayBtn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          ИГРАТЬ БЕСПЛАТНО
+        </button>
+        <button class="btn btn-ghost btn-sm" id="arcadeStopBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 5l14 14M19 5L5 19"/></svg>
+          Выключить
+        </button>
+        <span class="arcade-hint">Миры сохраняются в IndexedDB браузера — не выключай резко</span>
+      </div>
+    </div>
+
+    <div class="arcade-notes">
+      <div class="arcade-note reveal"><b>◇</b> Одиночная игра: миры хранятся прямо в браузере, настрою когда ушёл.</div>
+      <div class="arcade-note reveal"><b>◇</b> Multiplayer: в игре открой Multiplayer и добавь Eagler-сервер (адрес ws://).</div>
+      <div class="arcade-note reveal"><b>◇</b> Retro 1.5.2: тот самый вайб беты — криппер, инфкрест, без фитилей.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Nova Arena: KillAura sandbox ===== -->
+<section class="section" id="arena">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-tag">// nova arena</span>
+      <h2>Песочница <span class="grad-text">KillAura</span> — попробуй до установки</h2>
+      <p>Локальная арена прямо в браузере: настрой Reach / APS / Humanize, запусти раунд на 30 секунд.
+        KillAura молотит кристаллы сама, ты добиваешь кликами, а античит-детектор считает флаги.
+        Уйдёшь в rage — словишь BAN WAVE.</p>
+    </div>
+
+    <div class="arena-grid">
+      <aside class="arena-panel reveal">
+        <div class="ap-block">
+          <div class="ap-title">KillAura</div>
+          <div class="ap-switch on" id="arKillSwitch" role="switch" aria-checked="true" tabindex="0">
+            <span class="ap-knob"></span>
+            <span class="ap-swtext">ON</span>
+          </div>
+        </div>
+
+        <div class="ap-block">
+          <div class="ap-title">Настройки</div>
+          <label class="ap-row">Reach <b id="arReachVal">3.2</b><span class="ap-unit">бл</span></label>
+          <input type="range" class="ap-range" id="arReach" min="30" max="60" value="32">
+          <label class="ap-row">APS <b id="arApsVal">11</b></label>
+          <input type="range" class="ap-range" id="arAps" min="6" max="22" value="11">
+          <label class="ap-row">Humanize <b id="arHumVal">70</b><span class="ap-unit">%</span></label>
+          <input type="range" class="ap-range" id="arHum" min="0" max="100" value="70">
+          <div class="ap-seg" id="arSnapSeg">
+            <button type="button" class="ap-seg-btn active" data-snap="smooth">Плавный</button>
+            <button type="button" class="ap-seg-btn" data-snap="fast">Фаст</button>
+          </div>
+        </div>
+
+        <div class="ap-block">
+          <div class="ap-title">Раунд</div>
+          <button class="btn btn-primary btn-sm ap-start" id="arStartBtn">▶ Старт раунда (30с)</button>
+          <div class="ap-best">Рекорд: <b id="arBest">0</b> очк.</div>
+          <div class="ap-tip">Кристалл под курсором = хит. Мимо круга — MISS, и комбо сгорает.
+            20% хитов — крит ×2. Урон + 120 за килл + множитель комбо.</div>
+        </div>
+
+        <div class="ap-block">
+          <div class="ap-title">Детектор античита</div>
+          <div class="ap-meter"><i id="arRiskBar"></i></div>
+          <div class="ap-flagline" id="arFlagLine">Grim слушает тишину…</div>
+        </div>
+      </aside>
+
+      <div class="arena-stage reveal">
+        <canvas id="arCanvas"></canvas>
+
+        <div class="arena-stats">
+          <div class="as"><span>Счёт</span><b id="arScore">0</b></div>
+          <div class="as"><span>Комбо</span><b id="arCombo">0</b></div>
+          <div class="as"><span>Kills</span><b id="arKills">0</b></div>
+          <div class="as"><span>Время</span><b id="arTime">30с</b></div>
+        </div>
+
+        <div class="arena-end hidden" id="arEnd">
+          <div class="arena-end-card">
+            <div class="ae-title">РАУНД ОКОНЧЕН</div>
+            <div class="ae-score" id="arEndScore">0</div>
+            <div class="ae-row"><span>Kills</span><b id="arEndKills">0</b></div>
+            <div class="ae-row"><span>Макс. комбо</span><b id="arEndCombo">0</b></div>
+            <div class="ae-new hidden" id="arEndNew">★ НОВЫЙ РЕКОРД!</div>
+            <button class="btn btn-primary btn-sm" id="arAgainBtn">↻ Ещё раз</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Nova AI section ===== -->
+<section class="section" id="ai">
+  <div class="container ai-section">
+    <div class="ai-section-left reveal">
+      <span class="section-tag">// nova ai</span>
+      <h2>ИИ-поддержка, <span class="grad-text">прямо в игре</span></h2>
+      <p>
+        Nova AI живёт прямо в клиенте: подскажет конфиг под нужный античит, объяснит,
+        почему каст-уходит и поможет собрать сетап за секунду. И не требует подписки.
+      </p>
+      <div class="ai-feature-list">
+        <div class="ai-feature"><span>✦</span> Мгновенные ответы про модули и версии</div>
+        <div class="ai-feature"><span>✦</span> Готовые конфиги под Grim / Matrix / Vanilla</div>
+        <div class="ai-feature"><span>✦</span> Подсказки короткими фразами, как в чате MC</div>
+        <div class="ai-feature"><span>✦</span> Бесплатный облачный ИИ по умолчанию · свой API в 1 клик</div>
+      </div>
+      <button class="btn btn-primary btn-lg" id="aiOpenBtn">
+        ✦ Спросить Nova AI
+      </button>
+    </div>
+    <div class="ai-section-right reveal">
+      <div class="ai-mock">
+        <div class="ai-mock-head"><span class="ai-dot"></span>Nova AI · внутри клиента</div>
+        <div class="ai-mock-body">
+          <div class="ai-mock-msg bot">✦ Grim детектит мой Reach… что крутить?</div>
+          <div class="ai-mock-msg bot">Nova AI: Reach → dist 3.0, flatt 0.08, смени профиль на «легенда» — и порт будет чистым 💚</div>
+          <div class="ai-mock-msg user">thanks!!</div>
+          <div class="ai-mock-msg bot">✦ Всегда рядом. GL в топ-1.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Nova Mail ===== -->
+<section class="section" id="mail">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-tag">// nova mail</span>
+      <h2>Почта <span class="grad-text">Nova Mail</span> — с собственным сервером</h2>
+      <p>Мини-почтовый сервис прямо на сайте: регистрация, личные ящики на диске, письма между юзерами.
+        @nova отвечает на письма, @grim — по-гримовски, а несуществующий ник вернётся bounce'ом от mailer-daemon.</p>
+    </div>
+
+    <div class="mail-card reveal">
+      <!-- авторизация / регистрация -->
+      <div class="mail-auth" id="mailAuth">
+        <div class="ma-head">
+          <div class="ma-logo">✦ NOVA MAIL</div>
+          <div class="ma-tabs">
+            <button type="button" class="ma-tab active" data-auth="login">Вход</button>
+            <button type="button" class="ma-tab" data-auth="reg">Регистрация</button>
+          </div>
+        </div>
+        <form class="ma-form" id="mailForm">
+          <input class="ma-input" id="mailUser" placeholder="ник (3–16: a-z, 0-9, _)" maxlength="16" autocomplete="username">
+          <div class="ma-mail hidden" id="mailRegRow">
+            <div class="ma-code-line">
+              <input class="ma-input" id="mailEmail" type="email" placeholder="настоящий email — туда придёт код" maxlength="80" autocomplete="email">
+              <button class="btn btn-ghost btn-sm ma-code-btn" id="mailCodeBtn" type="button">Получить код</button>
+            </div>
+            <input class="ma-input" id="mailCode" placeholder="6 цифр из письма" inputmode="numeric" maxlength="6" autocomplete="one-time-code">
+          </div>
+          <input class="ma-input" id="mailPass" type="password" placeholder="пароль (от 4 символов)" maxlength="64" autocomplete="current-password">
+          <button class="btn btn-primary btn-sm ma-go" id="mailGoBtn" type="submit">Войти в ящик</button>
+          <div class="ma-msg" id="mailMsg">Всё живёт на твоём localhost — никакого облака</div>
+        </form>
+      </div>
+
+      <!-- почтовый клиент -->
+      <div class="mail-client hidden" id="mailClient">
+        <div class="mail-top">
+          <div class="mail-logo">✦ NOVA MAIL</div>
+          <div class="mail-user" id="mailWho">@user</div>
+          <button class="btn btn-ghost btn-sm" id="mailLogout" type="button">Выйти</button>
+        </div>
+        <div class="mail-cols">
+          <div class="mail-list-col">
+            <div class="mail-list-bar"><span>Входящие</span><b id="mailUnread">0</b></div>
+            <div class="mail-list" id="mailList"></div>
+            <button class="btn btn-primary btn-sm mail-compose-btn" id="mailComposeBtn" type="button">✎ Написать</button>
+          </div>
+          <div class="mail-view" id="mailView">
+            <div class="mail-empty">Выбери письмо слева ✦</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="section section-alt" id="faq">
+  <div class="container faq-container">
+    <div class="section-head reveal">
+      <span class="section-tag">// faq</span>
+      <h2>Частые <span class="grad-text">вопросы</span></h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item reveal">
+        <button class="faq-q">
+          <span>Что такое Nova DLC и чем он отличается от обычного клиента?</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Nova DLC — это дополнение-пак поверх чит-клиента: премиум-модули, HUD в зелёно-синей теме, скриншоты при убийстве и встроенный ИИ-ассистент. Ставится одним .zip в папку mods.</div></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">
+          <span>На какие версии работает Nova DLC?</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Основная сборка — Minecraft <b>1.21.11</b> (Fabric). Обновления под новые версии выходят в течение 1–3 дней после релиза Mojang.</div></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">
+          <span>Меня могут забанить?</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Любой чит — это риск. На анархии и приватных серверах используйте смело, а на больших проектах включайте профили «легенды» и модули с пометкой safe.</div></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">
+          <span>Как открыть ClickGUI и Nova AI?</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">ClickGUI — <b>RShift</b> (правый Shift), назначение меняется в настройках модуля Gui. Nova AI вызывается клавишей <b>Y</b> или командой <b>.ai</b> в чате.</div></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">
+          <span>DLC бесплатный?</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Да, Nova DLC полностью бесплатен. Никаких ключей активации, подписок и скрытых платежей.</div></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">
+          <span>Антивирус ругается — это нормально?</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Инжектор модифицирует процесс игры, поэтому часть антивирусов может реагировать warning'ом. Добавьте папку клиента в исключения, если доверяете сборке.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-left">
+      <a href="#" class="logo"><span class="logo-mark">✦</span>Nova<span>&nbsp;DLC</span></a>
+      <p>Nova DLC — прокачка чит-клиента для Minecraft 1.21.11 в фирменной зелёно-синей теме.</p>
+    </div>
+    <div class="footer-links">
+      <a href="#" onclick="notify('Вставь свою ссылку на Discord'); return false;">Discord</a>
+      <a href="#" onclick="notify('Вставь свою ссылку на Telegram'); return false;">Telegram</a>
+      <a href="#" onclick="notify('Вставь ссылку на YouTube'); return false;">YouTube</a>
+      <a href="#download">Скачать</a>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <p>© 2026 Nova DLC. Made with 💚💙 for PvP.</p>
+    <p class="disclaimer">Клиент предназначен для приватных серверов и образовательных целей. Используйте на свой страх и риск.</p>
+  </div>
+</footer>
+
+<!-- ===== Nova AI floating chat ===== -->
+<div class="ai-teaser" id="aiTeaser" role="status">
+  <span class="teaser-text">✦ Привет! Я Nova AI — есть вопрос?</span>
+  <button class="teaser-close" id="teaserClose" aria-label="Закрыть подсказку">✕</button>
+</div>
+
+<button class="ai-fab" id="aiFab" aria-label="Открыть ИИ-поддержку Nova AI">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 01-8.4 8.3 8.7 8.7 0 01-3.9-.9L3 21l2.2-5.5a8.2 8.2 0 01-1.1-4A8.4 8.4 0 0112.6 3.2 8.4 8.4 0 0121 11.5z"/><path d="M8.8 12h.01M12.6 12h.01M16.4 12h.01" stroke-width="2.6"/></svg>
+</button>
+
+<aside class="ai-panel" id="aiPanel" role="dialog" aria-label="Nova AI — поддержка">
+  <div class="ai-head">
+    <div class="ai-ava">✦</div>
+    <div class="ai-head-info">
+      <div class="ai-name">Nova AI</div>
+      <div class="ai-status"><span class="ai-dot"></span>онлайн · отвечает за секунды</div>
+    </div>
+    <button class="ai-min" id="aiSettingsBtn" aria-label="Настройки ИИ" title="Настройки ИИ (свой API)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 00.34 1.87l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.7 1.7 0 00-1.87-.34 1.7 1.7 0 00-1.03 1.56V21a2 2 0 11-4 0v-.09a1.7 1.7 0 00-1.11-1.56 1.7 1.7 0 00-1.87.34l-.06.06a2 2 0 11-2.83-2.83l.06-.06a1.7 1.7 0 00.34-1.87 1.7 1.7 0 00-1.56-1.03H3a2 2 0 110-4h.09a1.7 1.7 0 001.56-1.11 1.7 1.7 0 00-.34-1.87l-.06-.06a2 2 0 112.83-2.83l.06.06a1.7 1.7 0 001.87.34h.01a1.7 1.7 0 001.03-1.56V3a2 2 0 114 0v.09a1.7 1.7 0 001.03 1.56 1.7 1.7 0 001.87-.34l.06-.06a2 2 0 112.83 2.83l-.06.06a1.7 1.7 0 00-.34 1.87v.01a1.7 1.7 0 001.56 1.03H21a2 2 0 110 4h-.09a1.7 1.7 0 00-1.56 1.03z"/></svg>
+    </button>
+    <button class="ai-min" id="aiClose" aria-label="Свернуть чат">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <div class="ai-settings" id="aiSettings">
+    <label>Endpoint (OpenAI-совместимый)</label>
+    <input class="ai-input" id="setUrl" placeholder="Пусто = бесплатный Pollinations.ai">
+    <label>API-ключ (если нужен)</label>
+    <input class="ai-input" id="setKey" type="password" placeholder="sk-… (для локальных не нужен)">
+    <label>Модель</label>
+    <input class="ai-input" id="setModel" placeholder="llama3.1 / qwen2.5:7b / …">
+    <small>Свой бесплатный вариант — локальная Ollama: запусти <b>ollama serve</b> и укажи
+      <b>http://localhost:11434/v1/chat/completions</b>, модель <b>llama3.1</b>.
+      Если Ollama ругается на CORS — запусти с переменной <b>OLLAMA_ORIGINS=*</b>.
+      Ключ хранится только в браузере (localStorage) и не уходит никуда, кроме твоего endpoint.</small>
+    <div class="ai-set-row">
+      <button class="ai-save" id="setSave" type="button">Сохранить</button>
+      <button class="ai-reset" id="setReset" type="button">Сбросить</button>
+    </div>
+  </div>
+  <div class="ai-msgs" id="aiMsgs"></div>
+  <div class="ai-chips" id="aiChips"></div>
+  <form class="ai-input-row" id="aiForm">
+    <input class="ai-input" id="aiInput" type="text" placeholder="Спроси Nova AI…" autocomplete="off">
+    <button class="ai-send" type="submit" aria-label="Отправить">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+    </button>
+  </form>
+</aside>
+
+<div class="toast" id="toast"></div>
+
+<script src="script.js"></script>
+<script src="chat.js"></script>
+<script src="arena.js"></script>
+<script src="mail.js"></script>
+</body>
+</html>
